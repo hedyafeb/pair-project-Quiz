@@ -17,6 +17,9 @@ class TeacherController {
         })
         .catch()
     }
+    static createQuiz(req,res){
+        res.render('teacherCreateQuestion')
+    }
 }
 
 module.exports = TeacherController;

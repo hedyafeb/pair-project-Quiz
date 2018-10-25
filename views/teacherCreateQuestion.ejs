@@ -1,29 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    question
-    <form action="/teacher/welcomePage" method="POST">
-    <input type="text" name="soal" placeholder="Enter Your question Here">
-    <br>
-    <label for="a">A</label>
-    <input type="text" name="a" placeholder="answer">
-    <label for="a">B</label>
-    <input type="text" name="b" placeholder="answer">
-    <label for="a">C</label>
-    <input type="text" name="c" placeholder="answer">
-    <label for="a">D</label>
-    <input type="text" name="d" placeholder="answer">
-    <br>
-    <label for="theAnswer">The Answer</label>
-    <input type="text" placeholder="jawaban">
-    <button type="submit">Add</button>
-</form>
-<button><a href="/"></a></button>
-</body>
-</html>
+<%- include('partial/header') %>
+
+<div class="container">
+
+        question
+        <form action="/createquiz" method="POST">
+        <input type="text" class="form-control" name="soal" placeholder="Enter Your question Here" po> 
+        <br>
+        <label for="a">A</label>
+        <input type="text" name="a" placeholder="answer">
+        <br>
+        <label for="a">B</label>
+        <input type="text" name="b" placeholder="answer">
+        <br>
+        <label for="a">C</label>
+        <input type="text" name="c" placeholder="answer">
+        <br>
+        <label for="a">D</label>
+        <input type="text" name="d" placeholder="answer">
+        <br>
+        <label for="theAnswer">The Answer</label>
+        <br>
+        <input type="text" placeholder="jawaban">
+        <button type="submit">Add</button>
+        <br><br>
+        <a class="btn btn-primary" href="#" role="button">Finish</a>
+        <!-- <button hre>Add</button> -->
+        </form>
+</div>
+
+<%- include('partial/footer') %>
