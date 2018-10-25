@@ -1,0 +1,21 @@
+<%- include('partial/header') %>
+
+
+<div class="container">
+    <form action="" method="post">
+    <% data.forEach(x => { %>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h4 class="card-title"> <%= x.question%> </h4>
+            <% x.Jawabans.forEach(j => { %>
+                <input type="radio" name="<%= x.id%>" value="<%= j.id%>"> <%= j.description %> <br />
+            <% }) %>
+        </div>
+    </div>
+    <% }) %>
+    <button type="submit">Submit Jawaban</button>
+    </form>
+</div>
+
+
+<%- include('partial/footer') %>
