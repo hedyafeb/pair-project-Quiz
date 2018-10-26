@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('partials/header-public') %>
+
+<body>
+    <form action="/teacher/login" method="POST">
+        <label>Login as Teacher</label><br><br>
+        <label>email</label>
+        <input type="email" name="email" placeholder="please insert your name" >
+
+        <label>password</label>
+        <input type="password" name="password" placeholder="please insert your password">
+        <input type="submit" value="login">
+    </form>
+
+    <%- include('partials/footer') %>

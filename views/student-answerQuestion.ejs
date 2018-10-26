@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<%- include('partials/header-student') %>
+<body>
+    <h1>Silahkan jawab pertanyaan di bawah ini:</h1>
+    
+    <form action="/student/result" method="POST">
+        <% for ( let i = 0; i < questions.length; i++) { %>
+            <label><%=i+1%>. <%=questions[i].description%></label><br>
+            <input type="text" name="QuestionId" value="<%=questions[i].id%>" hidden>
+            <input type="text" name="correctAnswer" value="<%=questions[i].correctAnswer%>" hidden>
+            <input type="radio" name="currentAnswer<%=questions[i].id%>" value="<%=questions[i].PossibleAnswers[0].key%>"> <%=questions[i].PossibleAnswers[0].description%> <br>
+            <input type="radio" name="currentAnswer<%=questions[i].id%>" value="<%=questions[i].PossibleAnswers[1].key%>"> <%=questions[i].PossibleAnswers[1].description%> <br>
+            <input type="radio" name="currentAnswer<%=questions[i].id%>" value="<%=questions[i].PossibleAnswers[2].key%>"> <%=questions[i].PossibleAnswers[2].description%> <br>
+            <input type="radio" name="currentAnswer<%=questions[i].id%>" value="<%=questions[i].PossibleAnswers[3].key%>"> <%=questions[i].PossibleAnswers[3].description%> <br>
+            <br>
+        <% } %>
+        <input type="submit" value="submit">
+    </form>
+
+
+<%- include('partials/footer') %>

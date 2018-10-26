@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<%- include('partials/header-public') %>
+
+<body>
+    <button><a href="/teacher/login">Login as Teacher</a></button>
+    <button><a href="/student/login">Login as Student</a></button>
+
+    <h1>Welcome to Quiz website</h1>
+
+    <form action="/teacher/register" method="POST">
+        <label>Register as Teacher</label><br><br>
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Please insert your name"><br><br>
+
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Please insert your password"><br><br>
+        <input type="submit" value="register">
+    </form>
+
+    <br><br>
+    <form action="/student/register" method="POST">
+        <label>Register as Student</label><br><br>
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Please insert your email"><br><br>
+
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Please insert your password"><br><br>
+        <input type="submit" value="register">
+    </form>
+
+    <%- include('partials/footer') %>
