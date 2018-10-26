@@ -8,6 +8,9 @@ router.get('/', (req, res) => {
 
 router.use('/teacher', teacher)
 router.use('/student', student)
+router.get('/logout', (req, res) => {
+    res.redirect('/') // blom ada session
+})
 
 // router.get('*', (rq, rs) => res.status(404).render())
 
