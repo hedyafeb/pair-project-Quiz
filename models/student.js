@@ -10,5 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     Student.hasMany(models.StudentQuestion)
     // Student.belongsToMany(models.Question, {through : 'StudentQuestion'})
   };
+
+
+
   return Student;
 };

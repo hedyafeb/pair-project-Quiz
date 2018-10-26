@@ -1,8 +1,24 @@
 const { Teacher } = require('../models/index.js')
 const { PossibleAnswer } = require('../models/index.js')
 const { Question } = require('../models/index.js')
+const joinQuestionName = require('../helpers/joinQuestionName')
+
 
 class TeacherController {
+    static homepage(req, res) {
+        Teacher.findOne(
+            {where: {email: req.session.user.email}}
+        )
+        .then(teacher => {
+            // res.send(teacher)
+            res.render('teacher-homepage.ejs', {teacher: teacher})
+        })
+        .catch(err => {
+            res.send(err)
+        })
+        
+    }
+    
     static register(req, res) {
         Teacher.create(req.body)
             .then(() => {
@@ -30,10 +46,11 @@ class TeacherController {
                 password: teacher.password,
                 TeacherId: teacher.id
             } // nnti bisa req.session.user = student
-            res.redirect('/teacher/createNewQuestion')
+            // res.send(req.session)
+            res.redirect('/teacher/homepage')
         })
         .catch(err => {
-            res.send(err)
+            res.send('Password or email wrong')
         })
     }
 
@@ -43,7 +60,7 @@ class TeacherController {
         )
             .then(questions => {
                 // res.send(questions)
-                res.render('teacher-createQuestion.ejs', { questions })
+                res.render('teacher-createQuestion.ejs', { questions, joinQuestionName })
             })
             .catch(err => {
                 res.send(err)
@@ -79,7 +96,32 @@ class TeacherController {
             })
     }
 
+    static deleteQuestion(req, res) {
+        Question.destroy({
+            where: {id: req.params.questionId}
+        })
+        .then(() => {
+            res.redirect('/teacher/createNewQuestion')
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
 
+    static logout(req, res) {
+        req.session.user = null
+        console.log(req.session)
+        res.redirect('/')
+
+        // req.session.destroy(err => {
+        //     console.log(req.session)
+        //     if (err) {
+        //         res.send(err)
+        //     } else {
+        //         res.redirect('/')
+        //     }
+        // })
+    }
 
 
 }

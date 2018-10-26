@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('partials/header') %>
+<%- include('partials/header-teacher') %>
 
 <body>
     <div class="jumbotron">
@@ -23,13 +23,14 @@
             <label>Correct Answer: </label>
             <input type="text" name="correctAnswer" required><br>
             <input type="submit" value="add new Question">
+
             
         </form>
         <button><a href="/">Back</a></button>
 
 
         <% for (let k = 0; k < questions.length; k++) { %>
-            <p>Question <%= questions[k].id%>: <%= questions[k].description%></p>
+            <p><%=joinQuestionName(questions[k].id, questions[k].description)%></p>
             <p>Correct Answer: <%= questions[k].correctAnswer%></p>
             <table border="1">
                 <% for (let j = 0; j < questions[k].PossibleAnswers.length; j++) { %>
@@ -39,6 +40,7 @@
                 </tr>
                 <% } %>
             </table>
+            <p><a href="/teacher/deleteQuestion/<%= questions[k].id%>">delete Question</a></p>
         <% } %>
     </div>
     

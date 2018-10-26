@@ -4,6 +4,10 @@ const { PossibleAnswer } = require('../models/index.js')
 const { StudentQuestion } = require('../models/index.js')
 
 class StudentController {
+    static homepage(req, res) {
+        res.render('student-homepage.ejs')
+    }
+
     static register(req, res) {
         Student.create(req.body)
             .then(() => {
@@ -19,7 +23,7 @@ class StudentController {
     }
 
     static login(req, res) {
-        let name = req.body.email
+        let name = req.body.name
         let password = req.body.password
         Student.findOne(
             { where: { name, password } }
@@ -30,10 +34,12 @@ class StudentController {
                     name: student.name,
                     password: student.password
                 } // nnti bisa req.session.user = student
-                res.redirect('/student/welcomePage')
+                // res.send(req.session)
+                res.redirect('/student/homepage')
             })
             .catch(err => {
-                res.send(err)
+                res.send('Password or email wrong')
+
             })
     }
 
@@ -97,6 +103,16 @@ class StudentController {
             .catch(err => {
                 res.send(err)
             })
+    }
+
+    static logout(req, res) {
+        req.session.destroy(err => {
+            if (err) {
+                res.send(err)
+            } else {
+                res.redirect('/')
+            }
+        })
     }
 }
 

@@ -1,8 +1,10 @@
-function auth(req, res, next) {
+
+
+function isStudent(req, res, next) {
     console.log(req.session)
     // res.send(req.session)
     // undefined.isLoggedIn
-    if (req.session.user && req.session.user.isLoggedIn == true) {
+    if (req.session.user.name == 'yaya@mail.com') {
         next()
     }
     else {
@@ -10,4 +12,5 @@ function auth(req, res, next) {
     }
 }
 
-module.exports = auth;
+module.exports = isStudent;
+

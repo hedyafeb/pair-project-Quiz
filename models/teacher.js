@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     Teacher.hasMany(models.Question)
   };
 
+  Teacher.prototype.greet = function() {
+    return `Welcome ${this.email}!`
+  }
   
   return Teacher;
 };

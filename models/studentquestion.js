@@ -38,11 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     StudentQuestion.belongsTo(models.Question)
   };
 
-  StudentQuestion.prototype.getScore = function() {
-    let allQuestions = sequelize.models.Question.findAll()
-    console.log(allQuestions);
-
-  }
+  
 
   return StudentQuestion;
 };
