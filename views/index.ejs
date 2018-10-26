@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Homepage</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
+<%- include('partials/header') %>
 
 <body>
     <button><a href="/teacher/login">Login as Teacher</a></button>
@@ -19,7 +11,7 @@
     <form action="/teacher/register" method="POST">
         <label>Register as Teacher</label><br><br>
         <label>Email</label>
-        <input type="text" name="email" placeholder="Please insert your name"><br><br>
+        <input type="email" name="email" placeholder="Please insert your name"><br><br>
 
         <label>Password</label>
         <input type="password" name="password" placeholder="Please insert your password"><br><br>
@@ -36,6 +28,5 @@
         <input type="password" name="password" placeholder="Please insert your password"><br><br>
         <input type="submit" value="register">
     </form>
-</body>
 
-</html>
+    <%- include('partials/footer') %>

@@ -10,6 +10,12 @@ module.exports = (sequelize, DataTypes) => {
     Question.hasMany(models.StudentQuestion)
     Question.belongsTo(models.Teacher)
     Question.hasMany(models.PossibleAnswer)
+    // Question.belongsToMany(models.Student, {through : 'StudentQuestion'})
   };
+
+  Question.getAll = function() {
+    Question.findAll()
+  }
+
   return Question;
 };

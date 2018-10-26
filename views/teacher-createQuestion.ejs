@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/header') %>
+
+<body>
+    <div class="jumbotron">
+        <h1>Welcome to Quiz</h1>
+
+        <form action="/teacher/createNewQuestion" method="POST">
+            <label for="">Question: </label>
+            <input type="text" name="description" placeholder="Enter Your question Here" required>
+            <br><br>
+            <label for="a">A</label>
+            <input type="text" name="answer[]" placeholder="answer" required>
+            <label for="a">B</label>
+            <input type="text" name="answer[]" placeholder="answer" required>
+            <label for="a">C</label>
+            <input type="text" name="answer[]" placeholder="answer" required>
+            <label for="a">D</label>
+            <input type="text" name="answer[]" placeholder="answer" required>
+            <br><br>
+            <label>Correct Answer: </label>
+            <input type="text" name="correctAnswer" required><br>
+            <input type="submit" value="add new Question">
+            
+        </form>
+        <button><a href="/">Back</a></button>
+
+
+        <% for (let k = 0; k < questions.length; k++) { %>
+            <p>Question <%= questions[k].id%>: <%= questions[k].description%></p>
+            <p>Correct Answer: <%= questions[k].correctAnswer%></p>
+            <table border="1">
+                <% for (let j = 0; j < questions[k].PossibleAnswers.length; j++) { %>
+                <tr>
+                    <td><%= questions[k].PossibleAnswers[j].key%></td>
+                    <td><%= questions[k].PossibleAnswers[j].description%></td>
+                </tr>
+                <% } %>
+            </table>
+        <% } %>
+    </div>
+    
+    <%- include('partials/footer') %>

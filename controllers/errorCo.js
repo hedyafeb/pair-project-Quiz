@@ -50,42 +50,38 @@ class StudentController {
             })
     }
 
-    static readResult(req, res) {
-        Student.findById(1) // masih hardcode
-            .then(student => {
-                // res.send(student)
-                res.render('student-result.ejs', {student})
-            })
-            .catch(err => {
-                res.send(err)
-            })
-    }
-
     static result(req, res) {
         let result = []
         let reqBody = Object.values(req.body)
         for (let i = 0; i < reqBody.length - 1; i++) {
             let obj = {
-                StudentId: 1, // masih hardcode
-                QuestionId: reqBody[0][i - 1],
+                StudentId: 2,
+                QuestionId: reqBody[0][i],
                 score: 0,
-                currentAnswer: reqBody[i + 1],
-                correctAnswer: reqBody[1][i - 1]
+                currentAnswer: reqBody[i + 1]
             }
             result.push(obj)
         }
         // res.send(result)
         StudentQuestion.bulkCreate(result)
             .then(() => {
-                // res.send(`answer recorded`)
-                res.redirect('/student/readResult')
+                res.send(`answer recorded`)
             })
             .catch(err => {
                 res.send(err)
             })
     }
 
-
+    static readResult(req, res) {
+        Student.findById(2) 
+        .then(student => {
+            res.send(student)
+            // res.render('student-result.ejs', {student})
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
 
     static readAllStudentQuestions(req, res) {
         StudentQuestion.findAll()

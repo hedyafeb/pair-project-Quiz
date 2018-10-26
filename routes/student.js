@@ -1,9 +1,16 @@
 const router = require('express').Router()
-const studentController = require('../controllers/studentController.js')
- 
-// router.post('/register', studentController.register) 
-router.get('/login', studentController.loginForm)
-// router.post('/login', studentController.login)
-// router.get('/welcomePage', studentController.welcomePage)
+const StudentController = require('../controllers/studentController.js')
+const auth = require('../middlewares/auth.js')
+
+router.post('/register', StudentController.register) 
+router.get('/login', StudentController.loginForm)
+router.post('/login', StudentController.login)
+// router.get('/welcomePage', StudentController.welcomePage)
+router.get('/answerQuestions', StudentController.readAllQuestions) // add auth
+router.post('/result', StudentController.result) // add auth
+router.get('/readResult', StudentController.readResult)
+router.get('/readStudentQuestion', StudentController.readAllStudentQuestions)
+
 
 module.exports = router
+
